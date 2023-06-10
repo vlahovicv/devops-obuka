@@ -26,7 +26,8 @@ jobs:
       - name: Run test
         run: chmod +x ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew
       - name: Run test
-        run: sed -i -e 's/\r$//' gradlew.sh &&./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew test
+        run: ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew test
+        shell: bash
 
   build:
     runs-on: ubuntu-latest
@@ -37,4 +38,4 @@ jobs:
       - name: Run build
         run: chmod +x ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew
       - name: Run build
-        run: sed -i -e 's/\r$//' gradlew.sh && ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
+        run:  ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
