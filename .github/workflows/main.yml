@@ -23,12 +23,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Go in dir
         run: cd  ./devops_obuka_cicd/cicd_basics/java-demo-app/
-      - name: List dir
-        run: ls
       - name: Run test
         run: chmod +x ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew
       - name: Run test
-        run: ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew test
+        run: sed -i -e 's/\r$//' gradlew.sh &&./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew test
 
   build:
     runs-on: ubuntu-latest
@@ -36,9 +34,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Go in dir
         run: cd  ./devops_obuka_cicd/cicd_basics/java-demo-app/
-      - name: List dir
-        run: ls
       - name: Run build
         run: chmod +x ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew
       - name: Run build
-        run: ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
+        run: sed -i -e 's/\r$//' gradlew.sh && ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
