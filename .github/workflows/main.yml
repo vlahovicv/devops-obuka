@@ -31,4 +31,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run build
-        run: ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
+        run: chmod +x gradlew && ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
