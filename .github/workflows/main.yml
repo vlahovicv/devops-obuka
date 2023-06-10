@@ -23,20 +23,25 @@ jobs:
         working-directory: ./devops_obuka_cicd/cicd_basics/java-demo-app/
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Go in dir
+      - name: Setup actions
+        uses: actions/checkout@v3
+      - name: Setup gradle
+        uses: gradle/gradle-build-actions@v2
+      - name: Set privilages
         run: chmod +x ./gradlew
       - name: Run test
         run: ./gradlew test
 
   build:
+    needs: test
     defaults:
       run:
         working-directory: ./devops_obuka_cicd/cicd_basics/java-demo-app/
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run build
-        run: chmod +x gradlew
+      - name: Setup actions
+        uses: actions/checkout@v3
+      - name: Setup gradle
+        uses: gradle/gradle-build-actions@v2
       - name: Run build
         run:  ./gradlew build
