@@ -18,24 +18,25 @@ permissions:
 
 jobs:
   test:
+    defaults:
+      run:
+        working-directory: scripts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Go in dir
-        run: cd  ./devops_obuka_cicd/cicd_basics/java-demo-app/
+        run: chmod +x ./gradlew
       - name: Run test
-        run: chmod +x ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew
-      - name: Run test
-        run: ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew test
-        shell: bash
+        run: ./gradlew test
 
   build:
+    defaults:
+      run:
+        working-directory: scripts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Go in dir
-        run: cd  ./devops_obuka_cicd/cicd_basics/java-demo-app/
       - name: Run build
-        run: chmod +x ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew
+        run: chmod +x gradlew
       - name: Run build
-        run:  ./devops_obuka_cicd/cicd_basics/java-demo-app/gradlew build
+        run:  ./gradlew build
